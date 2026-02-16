@@ -11,6 +11,7 @@ export interface FlexSignatureContainerProps {
     tabIndex?: number;
     id: string;
     imageData: EditableValue<string>;
+    hasSigned?: EditableValue<boolean>;
     canvasWidth: string;
     canvasHeight: string;
     penColor?: DynamicValue<string>;
@@ -23,6 +24,7 @@ export interface FlexSignaturePreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     imageData: string;
+    hasSigned: string;
     onSaveSignature: {} | null;
     canvasWidth: string;
     canvasHeight: string;

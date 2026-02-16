@@ -28,11 +28,11 @@ export function SignaturePad({
 }: SignaturePadProps): ReactElement {
     const sigCanvasRef = useRef<SignatureCanvas>(null);
 
-    // Load existing signature on mount
+    // Load existing signature on mount (re-add data URL prefix since we store raw base64)
     useEffect(() => {
         const sigCanvas = sigCanvasRef.current;
         if (sigCanvas && currentValue) {
-            sigCanvas.fromDataURL(currentValue, {
+            sigCanvas.fromDataURL(`data:image/png;base64,${currentValue}`, {
                 width: sigCanvas.getCanvas().width,
                 height: sigCanvas.getCanvas().height
             });
@@ -51,7 +51,7 @@ export function SignaturePad({
         const sigCanvas = sigCanvasRef.current;
         if (sigCanvas && !sigCanvas.isEmpty()) {
             const dataUrl = sigCanvas.getTrimmedCanvas().toDataURL("image/png");
-            onSave(dataUrl);
+            onSave(dataUrl.replace("data:image/png;base64,", ""));
         }
     }, [onSave]);
 

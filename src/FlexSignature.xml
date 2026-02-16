@@ -15,6 +15,13 @@
                     <attributeType name="String"/>
                 </attributeTypes>
             </property>
+            <property key="hasSigned" type="attribute" required="false">
+                <caption>Has signed</caption>
+                <description>Optional Boolean attribute set to true when a signature is present, false when cleared</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
         </propertyGroup>
 
         <propertyGroup caption="Events">
