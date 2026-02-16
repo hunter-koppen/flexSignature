@@ -9,8 +9,6 @@ export interface SignaturePadProps {
     penColor: string;
     penWidth: number;
     backgroundColor: string;
-    showClearButton: boolean;
-    showUndoButton: boolean;
     readOnly: boolean;
     currentValue: string | undefined;
     onSave: (dataUrl: string) => void;
@@ -24,8 +22,6 @@ export function SignaturePad({
     penColor,
     penWidth,
     backgroundColor,
-    showClearButton,
-    showUndoButton,
     readOnly,
     currentValue,
     onSave
@@ -43,36 +39,19 @@ export function SignaturePad({
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    // Clear the canvas when the value is emptied externally (e.g. via a Mendix nanoflow)
+    useEffect(() => {
+        const sigCanvas = sigCanvasRef.current;
+        if (sigCanvas && !currentValue) {
+            sigCanvas.clear();
+        }
+    }, [currentValue]);
+
     const handleEnd = useCallback(() => {
         const sigCanvas = sigCanvasRef.current;
         if (sigCanvas && !sigCanvas.isEmpty()) {
             const dataUrl = sigCanvas.getTrimmedCanvas().toDataURL("image/png");
             onSave(dataUrl);
-        }
-    }, [onSave]);
-
-    const handleClear = useCallback(() => {
-        const sigCanvas = sigCanvasRef.current;
-        if (sigCanvas) {
-            sigCanvas.clear();
-            onSave("");
-        }
-    }, [onSave]);
-
-    const handleUndo = useCallback(() => {
-        const sigCanvas = sigCanvasRef.current;
-        if (sigCanvas) {
-            const data = sigCanvas.toData();
-            if (data.length > 0) {
-                data.pop();
-                sigCanvas.fromData(data);
-                if (data.length === 0) {
-                    onSave("");
-                } else {
-                    const dataUrl = sigCanvas.getTrimmedCanvas().toDataURL("image/png");
-                    onSave(dataUrl);
-                }
-            }
         }
     }, [onSave]);
 
@@ -98,20 +77,6 @@ export function SignaturePad({
                 />
                 {readOnly && <div className="widget-flex-signature-overlay" />}
             </div>
-            {!readOnly && (showClearButton || showUndoButton) && (
-                <div className="widget-flex-signature-buttons">
-                    {showUndoButton && (
-                        <button type="button" className="btn widget-flex-signature-btn-undo" onClick={handleUndo}>
-                            Undo
-                        </button>
-                    )}
-                    {showClearButton && (
-                        <button type="button" className="btn widget-flex-signature-btn-clear" onClick={handleClear}>
-                            Clear
-                        </button>
-                    )}
-                </div>
-            )}
         </div>
     );
 }

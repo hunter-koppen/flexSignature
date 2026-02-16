@@ -43,9 +43,9 @@ config) is abstracted behind `@mendix/pluggable-widgets-tools`.
 -   **`src/FlexSignature.tsx`** — Main widget entry point. Unwraps Mendix `DynamicValue`/`EditableValue` props and
     renders the `SignaturePad` component.
 -   **`src/components/SignaturePad.tsx`** — Core signature drawing component. Wraps `react-signature-canvas` with
-    clear/undo functionality, read-only overlay, and base64 PNG export.
+    read-only overlay and base64 PNG export. Watches `currentValue` to clear the canvas when the attribute is emptied externally.
 -   **`src/FlexSignature.editorConfig.ts`** — Controls property visibility/validation in Mendix Studio.
--   **`src/ui/FlexSignature.css`** — Widget styles (canvas layout, buttons, read-only overlay).
+-   **`src/ui/FlexSignature.css`** — Widget styles (canvas layout, read-only overlay).
 -   **`src/package.xml`** — Mendix package manifest (defines widget path as `kobeon/`).
 
 ### Widget properties (defined in FlexSignature.xml)
@@ -55,7 +55,6 @@ config) is abstracted behind `@mendix/pluggable-widgets-tools`.
 -   **`onSaveSignature`** — Optional action triggered when signature data changes.
 -   **`canvasWidth` / `canvasHeight`** — String properties for CSS dimensions (e.g., `"100%"`, `"400px"`, `"50vh"`).
 -   **`penColor` / `penWidth` / `backgroundColor`** — Expression properties for drawing appearance.
--   **`showClearButton` / `showUndoButton`** — Boolean expression properties for button visibility.
 -   System properties: `Label`, `TabIndex`, `Editability` (drives read-only state).
 
 ### Mendix widget conventions

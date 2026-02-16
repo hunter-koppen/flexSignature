@@ -53,19 +53,6 @@
             </property>
         </propertyGroup>
 
-        <propertyGroup caption="Buttons">
-            <property key="showClearButton" type="expression" defaultValue="true" required="false">
-                <caption>Show clear button</caption>
-                <description>Whether to show the clear/reset button</description>
-                <returnType type="Boolean"/>
-            </property>
-            <property key="showUndoButton" type="expression" defaultValue="false" required="false">
-                <caption>Show undo button</caption>
-                <description>Whether to show the undo button</description>
-                <returnType type="Boolean"/>
-            </property>
-        </propertyGroup>
-
         <propertyGroup caption="Common">
             <systemProperty key="Label"/>
             <systemProperty key="TabIndex"/>

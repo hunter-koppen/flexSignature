@@ -25,30 +25,6 @@
     background: rgba(255, 255, 255, 0.01);
 }
 
-.widget-flex-signature-buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.widget-flex-signature-buttons .btn {
-    padding: 6px 16px;
-    font-size: 13px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #f5f5f5;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
-}
-
-.widget-flex-signature-buttons .btn:hover {
-    background: #e8e8e8;
-}
-
-.widget-flex-signature-buttons .btn:active {
-    background: #ddd;
-}
-
 .widget-flex-signature-loading {
     min-height: 100px;
     background: #f9f9f9;

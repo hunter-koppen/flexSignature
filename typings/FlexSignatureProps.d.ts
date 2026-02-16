@@ -16,8 +16,6 @@ export interface FlexSignatureContainerProps {
     penColor?: DynamicValue<string>;
     penWidth?: DynamicValue<Big>;
     backgroundColor?: DynamicValue<string>;
-    showClearButton?: DynamicValue<boolean>;
-    showUndoButton?: DynamicValue<boolean>;
 }
 
 export interface FlexSignaturePreviewProps {
@@ -31,6 +29,4 @@ export interface FlexSignaturePreviewProps {
     penColor: string;
     penWidth: string;
     backgroundColor: string;
-    showClearButton: string;
-    showUndoButton: string;
 }
