@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="kobeon.flexsignature.FlexSignature" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Flex Signature</name>
+    <description>Signature capture widget that stores signatures as base64 PNG data</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="Data source">
+            <property key="imageData" type="attribute" onChange="onSaveSignature" required="true">
+                <caption>Signature data attribute</caption>
+                <description>String attribute (Unlimited) to store the base64 PNG signature data URL</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Events">
+            <property key="onSaveSignature" type="action" required="false">
+                <caption>On save signature</caption>
+                <description>Action triggered when signature data is saved to the attribute</description>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Dimensions">
+            <property key="canvasWidth" type="string" defaultValue="100%">
+                <caption>Canvas width</caption>
+                <description>CSS width value (e.g., "100%", "400px", "50vw")</description>
+            </property>
+            <property key="canvasHeight" type="string" defaultValue="200px">
+                <caption>Canvas height</caption>
+                <description>CSS height value (e.g., "200px", "50%", "30vh")</description>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Appearance">
+            <property key="penColor" type="expression" defaultValue="'#000000'" required="false">
+                <caption>Pen color</caption>
+                <description>CSS color for the pen stroke</description>
+                <returnType type="String"/>
+            </property>
+            <property key="penWidth" type="expression" defaultValue="2.5" required="false">
+                <caption>Pen width</caption>
+                <description>Width of the pen stroke in pixels</description>
+                <returnType type="Decimal"/>
+            </property>
+            <property key="backgroundColor" type="expression" defaultValue="'#FFFFFF'" required="false">
+                <caption>Background color</caption>
+                <description>CSS color for the canvas background</description>
+                <returnType type="String"/>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Buttons">
+            <property key="showClearButton" type="expression" defaultValue="true" required="false">
+                <caption>Show clear button</caption>
+                <description>Whether to show the clear/reset button</description>
+                <returnType type="Boolean"/>
+            </property>
+            <property key="showUndoButton" type="expression" defaultValue="false" required="false">
+                <caption>Show undo button</caption>
+                <description>Whether to show the undo button</description>
+                <returnType type="Boolean"/>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Common">
+            <systemProperty key="Label"/>
+            <systemProperty key="TabIndex"/>
+            <systemProperty key="Editability"/>
+        </propertyGroup>
+    </properties>
+</widget>
